@@ -79,7 +79,7 @@ class Test_Create_Dataset(unittest.TestCase):
                          'this is the second sentence',
                          'this is the third sentence',
                          'This is the fourth sentence',
-                         ≠]
+                         ]
         with open(os.path.join(self.dir_path,'gold_list.txt'),'w') as f:
             test_file_content = f.write('\n'.join(example_lines))
 
