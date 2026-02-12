@@ -87,3 +87,6 @@ class Test_Create_Dataset(unittest.TestCase):
 
         self.assertTrue(isinstance(output,dict))
         self.assertTrue(isinstance(output['gold_list'],Dataset))
+
+    def tearDown(self):
+        self.temp_directory.cleanup()
