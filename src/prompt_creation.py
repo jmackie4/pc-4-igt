@@ -72,6 +72,8 @@ class PromptCreationSystem:
         prompt_builder.add_prompt(self.main_prompt, information_list, option='user')
         return prompt_builder.return_prompt()
 
+    def set_new_main_prompt(self, new_prompt):
+        self.main_prompt = new_prompt
 
 def parse_retrieval_results(results, n_results=3):
     final_results = []
