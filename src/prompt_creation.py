@@ -59,10 +59,10 @@ class PromptCreationSystem:
         self.example_pool = InformationRetrievalSystem(example_pool, num_examples=n_shots)
         self.n_shots = n_shots
 
-    def create_full_prompt(self, information_list, user_input_idxs, answer_idx):
+    def create_full_prompt(self, information_list, user_input_idxs, answer_idx,search_key):
         query = information_list[0]
         prompt_builder = PromptBuilder()
-        examples = self.example_pool.get_examples_from_query(query)
+        examples = self.example_pool.get_examples_from_query(query,search_key)
         parsed_examples = parse_retrieval_results(examples)
 
         for i in range(self.n_shots):
@@ -80,3 +80,4 @@ def parse_retrieval_results(results, n_results=3):
     for i in range(n_results):
         final_results.append([value[i] for key, value in results.items()])
     return final_results
+
