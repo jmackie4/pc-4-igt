@@ -1,3 +1,6 @@
+# Prompt Chaining 4 Interlinear Glossed Texts!!!
+
+
 This is the main code that I'm using for an experiment on utilizing the prompt chaining technique on creating interlinear glossed texts. There's a few main parts that build off of each other a bit.
 
 Create Datasets - Takes a directory path and creates huggingface dataset objects for each file. The processing is based on the files in the SIGMORPHON 2023 shared task!
