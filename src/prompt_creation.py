@@ -59,17 +59,17 @@ class PromptCreationSystem:
         self.example_pool = InformationRetrievalSystem(example_pool, num_examples=n_shots)
         self.n_shots = n_shots
 
-    def create_full_prompt(self, query_list, input_idxs, answer_idx):
-        main_query = query_list[0]
+    def create_full_prompt(self, information_list, user_input_idxs, answer_idx):
+        query = information_list[0]
         prompt_builder = PromptBuilder()
-        examples = self.example_pool.get_examples_from_query(main_query)
+        examples = self.example_pool.get_examples_from_query(query)
         parsed_examples = parse_retrieval_results(examples)
 
         for i in range(self.n_shots):
             current_information = parsed_examples[i]
-            prompt_builder.add_prompt(self.main_prompt, [current_information[i] for i in input_idxs], option='user')
+            prompt_builder.add_prompt(self.main_prompt, [current_information[i] for i in user_input_idxs], option='user')
             prompt_builder.add_prompt('Output: {}', [current_information[answer_idx]], option='assistant')
-        prompt_builder.add_prompt(self.main_prompt, query_list, option='user')
+        prompt_builder.add_prompt(self.main_prompt, information_list, option='user')
         return prompt_builder.return_prompt()
 
 

@@ -22,7 +22,8 @@ class InformationRetrievalSystem:
         self.dataset = dataset
         self.num_examples = num_examples
 
-    def get_examples_from_query(self, query):
-        overlap_scores = [get_word_overlap_score(query, sentence) for sentence in self.dataset['source']]
+    def get_examples_from_query(self, query,key_to_use):
+        overlap_scores = [get_word_overlap_score(query, sentence) for sentence in self.dataset[key_to_use]]
         largest_idxs = get_idx_of_nlargest_values(overlap_scores, self.num_examples)
         return get_examples_from_dataset(self.dataset, largest_idxs)
+
