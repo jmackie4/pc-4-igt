@@ -1,9 +1,14 @@
-This is the main code that I'm using for an experiment on utilizing the prompt chaining technique on creating interlinear glossed texts. There's a few main parts that build off of each other a bit.\n
-Create Datasets - Takes a directory path and creates huggingface dataset objects for each file. The processing is based on the files in the SIGMORPHON 2023 shared task!\n
+This is the main code that I'm using for an experiment on utilizing the prompt chaining technique on creating interlinear glossed texts. There's a few main parts that build off of each other a bit.
+
+Create Datasets - Takes a directory path and creates huggingface dataset objects for each file. The processing is based on the files in the SIGMORPHON 2023 shared task!
+
 Retrieval System - Takes a dataset and allows for someone to input a query string to get relevant examples based on number of items in the intersection between the query and the items in the specific dataset
-column\n
-Prompt Creation - Creates a full prompt for an autocausal model on HuggingFace. Honestly, this works for any chat model that takes a list of messages (dictionaries). I created this with TinyLlama model in mind so yea.\n
-Chain Prompts - This allows you to load in two prompts, as well as what parts of the items in the dataset should be used for the user prompt as well as which ones should be used for the assistant's answer. That's assuming you're doing in-context learning.\n
+column
+
+Prompt Creation - Creates a full prompt for an autocausal model on HuggingFace. Honestly, this works for any chat model that takes a list of messages (dictionaries). I created this with TinyLlama model in mind so yea.
+
+Chain Prompts - This allows you to load in two prompts, as well as what parts of the items in the dataset should be used for the user prompt as well as which ones should be used for the assistant's answer. That's assuming you're doing in-context learning.
+
 Oh yea, you'll also need to load in your dataset with the examples you want to use, and you'll need to give the huggingface model id of whatever chat model you want to use.
 
 I still have a lot of things to clean up and a bunch of tests to write for the actual program, but the code here does work if you meet the following requirements:
