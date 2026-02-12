@@ -12,7 +12,7 @@ Chain Prompts - This allows you to load in two prompts, as well as what parts of
 Oh yea, you'll also need to load in your dataset with the examples you want to use, and you'll need to give the huggingface model id of whatever chat model you want to use.
 
 I still have a lot of things to clean up and a bunch of tests to write for the actual program, but the code here does work if you meet the following requirements:
-1. You need to be using the SIGMORPHON 2023 IGT shared task data!
+1. You need to be using the SIGMORPHON 2023 IGT shared task data, AND you need to make sure that you're using the uncovered version of the track 2 files in that dataset! 
 2. You need to establish yourself which dataset will serve as your pool of examples for the information retrieval system
 3. You'll also need to define your own prompts to use for the prompt chain class. Just note that the first prompt should have enough template variables to fit the number of items in the input list,
 but the second prompt should have one more template variable since it'll use the original input list and add the LLM's generated output before going to the next prompt creator
